@@ -6,6 +6,8 @@ class tse_graphite (
   $mysql_db_name = 'graphite',
   $mysql_db_server = 'localhost',
   $mysql_db_rootpw = 'GnFXQwPvHFKau6F7BqgWun3Jq9',
+  $gr_timezone = 'America/Toronto',
+  $gr_secretkey = 'somethingsecret',
   ){
   contain mysql::server
 
@@ -22,8 +24,8 @@ class tse_graphite (
   } ->
   class { 'graphite':
     gr_max_updates_per_second => 100,
-    gr_timezone               => 'Europe/Berlin',
-    secret_key                => 'CHANGE_IT!',
+    gr_timezone               => $gr_timezone,
+    secret_key                => $gr_secretkey,
     gr_storage_schemas        => [
       {
         name       => 'carbon',
