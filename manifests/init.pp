@@ -8,9 +8,9 @@ class tse_graphite {
     unless => '/usr/sbin/getenforce | /bin/grep Permissive',
   }
 
-  file {'/usr/bin/pip':
+  file {'/usr/bin/pip-python':
     ensure => 'link',
-    target => '/usr/bin/pip-python',
+    target => '/usr/bin/pip',
   }
 
   class { 'graphite':
