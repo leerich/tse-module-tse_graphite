@@ -16,7 +16,7 @@ class tse_graphite {
   class { 'graphite':
     require => [
       Class['epel'],
-      File['/usr/bin/pip'],
+      File['/usr/bin/pip-python'],
       Exec['disable selinux']
     ],
   }
