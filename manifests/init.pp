@@ -10,7 +10,7 @@ class tse_graphite {
 
   file {'/usr/bin/pip':
     ensure => 'link',
-    target => '/usr/bin/pip',
+    target => '/usr/bin/pip-python',
   }
 
   class { 'graphite':
