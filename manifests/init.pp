@@ -10,6 +10,7 @@ class tse_graphite (
   $gr_secretkey = 'somethingsecret',
   ){
   contain mysql::server
+  contain epel
 
   mysql::db { $mysql_db_name:
     user     => $mysql_db_username,
@@ -49,6 +50,9 @@ class tse_graphite (
     gr_django_db_host         => 'mysql.my.domain',
     gr_django_db_port         => '3306',
     gr_memcache_hosts         => ['127.0.0.1:11211'],
-    require                   => Mysql::Db[$mysql_db_name],
+    require                   => [
+      Mysql::Db[$mysql_db_name],
+      Class['epel']
+      ],
   }
 }
