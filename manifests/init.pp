@@ -14,7 +14,8 @@ class tse_graphite {
   }
 
   class { 'graphite':
-    require => [
+    gr_timezone => 'America/Toronto',
+    require     => [
       Class['epel'],
       File['/usr/bin/pip-python'],
       Exec['disable selinux']
