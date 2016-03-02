@@ -3,9 +3,7 @@
 class tse_graphite {
   contain epel
 
-  exec {'disable selinux':
-    command => '/usr/sbin/setenforce 0',
-    unless => '/usr/sbin/getenforce | /bin/grep Permissive',
+ 
   }
 
   file {'/usr/bin/pip-python':
@@ -18,7 +16,7 @@ class tse_graphite {
     require     => [
       Class['epel'],
       File['/usr/bin/pip-python'],
-      Exec['disable selinux']
+    
     ],
   }
 }
